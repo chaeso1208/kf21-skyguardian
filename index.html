@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="build-version" content="KF21-NOSE-RELATIVE-20261124-v2.3">
+<meta name="build-version" content="KF21-NOSE-RELATIVE-UI-20261124-v2.4">
 <meta name="theme-color" content="#0b182a">
 <title>KF-21 SKY GUARDIAN · 수동 비행·공중전 업데이트</title>
 <style>:root {font-family: 'Noto Sans KR', 'Malgun Gothic',system-ui,-apple-system,Arial,sans-serif;color:#eef7ff;background:#071321;--glass:rgba(7,22,39,.78);--stroke:rgba(193,226,248,.24);--gold:#ffd061;--green:#89ffe0;--blue:#79c9ff}
@@ -470,7 +470,52 @@ html,body{overscroll-behavior:none;touch-action:pan-x pan-y;-webkit-user-select:
 #dangerScreen{justify-content:center!important;align-items:center!important;padding:0!important}
 #trainingRadio,#damageBanner{top:50%!important;transform:translate(-50%,-50%)!important}
 @media(max-height:480px){#flightTopControls{bottom:155px!important}}
-</style></head>
+</style><style id="kf-layout-ui-reposition-20261124">
+/* Keep view/voice/settings controls in the clear strip above the HUD, between status and radar. */
+#flightTopControls{
+  z-index:24!important;position:absolute!important;
+  top:max(6px,env(safe-area-inset-top))!important;bottom:auto!important;
+  left:clamp(175px,23vw,280px)!important;right:clamp(128px,18vw,215px)!important;
+  width:auto!important;display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,26px)!important;grid-auto-rows:26px!important;
+  gap:4px!important;pointer-events:auto!important;
+}
+#flightTopControls button{min-width:0!important;min-height:24px!important;padding:1px 3px!important;font-size:clamp(9px,1.1vw,11px)!important}
+/* Older scripts tag VIEW and GEAR as radar options; neutralize their fixed positioning. */
+#flightTopControls button.kf-radar-option{
+  position:relative!important;left:auto!important;right:auto!important;top:auto!important;
+  width:auto!important;height:auto!important;align-self:stretch!important;
+}
+/* Align lock, launch and flare directly above the right-hand turn controls. */
+#combatPanel{
+  z-index:23!important;left:auto!important;right:max(10px,env(safe-area-inset-right))!important;
+  transform:none!important;width:clamp(195px,26vw,245px)!important;
+  bottom:calc(max(8px,env(safe-area-inset-bottom)) + 138px)!important;
+  display:flex!important;flex-direction:column!important;gap:4px!important;
+}
+#combatPanel .combatButtons{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:5px!important;width:100%!important;
+}
+#combatPanel .combatButtons button{
+  min-width:0!important;width:100%!important;height:50px!important;min-height:0!important;
+  padding:2px 3px!important;font-size:clamp(9px,1.05vw,11px)!important;
+}
+#combatPanel .combatButtons button small{font-size:9px!important}
+#combatPanel #combatMessage,#combatPanel #damageStatus{display:none!important}
+@media (orientation:landscape) and (max-height:520px){
+  #flightTopControls{top:max(5px,env(safe-area-inset-top))!important;grid-template-rows:repeat(2,23px)!important;grid-auto-rows:23px!important;gap:3px!important}
+  #combatPanel{bottom:calc(max(7px,env(safe-area-inset-bottom)) + 101px)!important;width:clamp(180px,27vw,215px)!important}
+  #combatPanel .combatButtons{gap:4px!important}
+  #combatPanel .combatButtons button{height:42px!important;font-size:clamp(9px,1.2vw,10px)!important}
+}
+@media (orientation:landscape) and (max-width:750px){
+  #flightTopControls{left:clamp(175px,25vw,190px)!important;right:clamp(128px,19vw,138px)!important}
+  #combatPanel{right:max(10px,env(safe-area-inset-right))!important;width:180px!important}
+}
+</style>
+</head>
 <body><div id="damageBanner"></div>
 <div id="trainingRadio" class="hidden" role="status" aria-live="polite"></div>
 <div id="kf-release-marker" aria-label="게임 버전 확인">UI 재배치 · v2.6.9</div>
