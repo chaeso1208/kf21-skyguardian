@@ -470,10 +470,16 @@ html,body{overscroll-behavior:none;touch-action:pan-x pan-y;-webkit-user-select:
 #dangerScreen{justify-content:center!important;align-items:center!important;padding:0!important}
 #trainingRadio,#damageBanner{top:50%!important;transform:translate(-50%,-50%)!important}
 @media(max-height:480px){#flightTopControls{bottom:155px!important}}
-</style><style>#combatPanel,.mission[data-mission="sortie"],.mission[data-mission="recon"]{display:none!important}#radarLock{visibility:hidden}</style></head>
+</style><style>#combatPanel,.mission[data-mission="sortie"],.mission[data-mission="recon"]{display:none!important}#radarLock{visibility:hidden}</style><style id="kf-ui-271">
+#flightTopControls{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:max(8px,env(safe-area-inset-bottom))!important;transform:translateX(-50%);width:clamp(112px,19vw,180px)!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:28px!important;gap:3px!important;pointer-events:none!important}
+#flightTopControls button{pointer-events:auto!important;min-height:0!important;font-size:10px!important}
+#flightTopControls button.kf-radar-option{position:fixed!important;transform:none!important}
+#flightTopControls{transform:none!important;left:calc(50% - clamp(56px,9.5vw,90px))!important}
+@media(orientation:landscape) and (max-height:450px){#touchpad .directional-group{width:clamp(174px,22vw,190px)!important;min-width:174px!important}#touchpad .direction-pad{aspect-ratio:1.35!important}#flightTopControls{grid-auto-rows:24px!important} }
+</style></head>
 <body><div id="damageBanner"></div>
 <div id="trainingRadio" class="hidden" role="status" aria-live="polite"></div>
-<div id="kf-release-marker" aria-label="게임 버전 확인">자유비행 · v2.7.0</div>
+<div id="kf-release-marker" aria-label="게임 버전 확인">자유비행 · v2.7.1</div>
 <canvas id="scene" aria-label="KF-21 쉬운 조종 3D 비행 게임"></canvas>
 <div id="app"></div>
 <div id="landscapeNotice" role="dialog" aria-modal="true" aria-labelledby="landscapeHeading">
