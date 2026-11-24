@@ -574,6 +574,94 @@ body.enemyThreat #enemyThreatBanner{animation:enemyWarningPulse .46s ease-in-out
 #supportCallBtn.hidden{display:none!important}
 #combatPanel #missileCount,#combatPanel #flareCount{font-variant-numeric:tabular-nums;font-weight:900}
 </style>
+<style id="kf-landscape-ui-overlap-fix-20261125">
+/* Landscape touchscreen HUD: separate release label, settings, combat, and flight controls. */
+@media (orientation:landscape) and (pointer:coarse) {
+  #kf-release-marker { display:none !important; }
+  #flightTopControls {
+    position:fixed !important;
+    z-index:46 !important;
+    top:max(6px, env(safe-area-inset-top)) !important;
+    left:50% !important;
+    right:auto !important;
+    transform:translateX(-50%) !important;
+    width:clamp(168px, 21vw, 235px) !important;
+    max-width:calc(100vw - 24px) !important;
+    box-sizing:border-box !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    grid-template-rows:22px !important;
+    gap:4px !important;
+  }
+  #flightTopControls button {
+    min-width:0 !important;
+    min-height:20px !important;
+    height:22px !important;
+    padding:1px 3px !important;
+    font-size:clamp(8px, 1vw, 10px) !important;
+    white-space:nowrap !important;
+  }
+  /* #touchpad is nested in #combatPanel in the legacy markup. Fixed positioning
+     anchors it to the screen, not the much smaller combat panel. */
+  #touchpad {
+    position:fixed !important;
+    z-index:40 !important;
+    left:max(10px, env(safe-area-inset-left)) !important;
+    right:max(10px, env(safe-area-inset-right)) !important;
+    top:auto !important;
+    bottom:max(8px, env(safe-area-inset-bottom)) !important;
+    width:auto !important;
+    box-sizing:border-box !important;
+    display:flex !important;
+    align-items:flex-end !important;
+    justify-content:space-between !important;
+    gap:clamp(8px, 1.5vw, 22px) !important;
+  }
+  /* Combat controls sit above the right-hand turn controls, with independent
+     positioning so they cannot cover the direction pad or be clipped. */
+  #combatPanel {
+    position:fixed !important;
+    z-index:42 !important;
+    top:auto !important;
+    left:auto !important;
+    right:max(10px, env(safe-area-inset-right)) !important;
+    bottom:clamp(185px, 35vh, 250px) !important;
+    width:clamp(180px, 23vw, 270px) !important;
+    max-width:calc(100vw - 24px) !important;
+    box-sizing:border-box !important;
+    overflow:visible !important;
+    transform:none !important;
+  }
+  #combatPanel .combatButtons {
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:clamp(3px, .6vw, 8px) !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+  #combatPanel .combatButtons button {
+    min-width:0 !important;
+    min-height:38px !important;
+    padding:4px 3px !important;
+    font-size:clamp(10px, 1.05vw, 13px) !important;
+    white-space:nowrap !important;
+  }
+  #combatPanel .combatButtons button small { font-size:9px !important; }
+}
+@media (orientation:landscape) and (pointer:coarse) and (max-width:700px) {
+  #flightTopControls { width:168px !important; }
+  #combatPanel {
+    right:max(8px, env(safe-area-inset-right)) !important;
+    width:clamp(160px, 36vw, 205px) !important;
+    bottom:clamp(170px, 36vh, 215px) !important;
+  }
+  #combatPanel .combatButtons button { font-size:9px !important; }
+}
+@media (orientation:landscape) and (pointer:coarse) and (max-height:500px) {
+  #touchpad { bottom:max(6px, env(safe-area-inset-bottom)) !important; }
+  #combatPanel { bottom:clamp(165px, 35vh, 190px) !important; }
+  #combatPanel .combatButtons button { min-height:34px !important; padding:3px 2px !important; }
+}
+</style>
 </head>
 <body><div id="damageBanner"></div>
 <div id="trainingRadio" class="hidden" role="status" aria-live="polite"></div>
