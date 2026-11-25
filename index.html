@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="build-version" content="KF21-EXPERT-TOUCH-20261125-v2.7.4">
+<meta name="build-version" content="KF21-EXPERT-TOUCH-20261125-v2.7.5">
 <meta name="theme-color" content="#0b182a">
 <title>KF-21 SKY GUARDIAN · 수동 비행·공중전 업데이트</title>
 <style>:root {font-family: 'Noto Sans KR', 'Malgun Gothic',system-ui,-apple-system,Arial,sans-serif;color:#eef7ff;background:#071321;--glass:rgba(7,22,39,.78);--stroke:rgba(193,226,248,.24);--gold:#ffd061;--green:#89ffe0;--blue:#79c9ff}
@@ -662,7 +662,7 @@ body.enemyThreat #enemyThreatBanner{animation:enemyWarningPulse .46s ease-in-out
   #combatPanel .combatButtons button { min-height:34px !important; padding:3px 2px !important; }
 }
 </style>
-<style id="kf-expert-mode-touch-start-fix-20261125">
+<style id="kf-expert-mode-menu-cleanup-20261125">
 .difficulty-chooser{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px auto 4px;padding:9px 12px;max-width:min(760px,94vw);border:1px solid rgba(132,211,233,.24);border-radius:14px;background:rgba(7,24,40,.72);color:#cae9f5;font-size:13px}
 .difficulty-chooser>span{font-size:11px;font-weight:850;letter-spacing:.09em;color:#8fc7df;margin-right:4px}
 .difficulty-switch{position:relative;z-index:30;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;width:248px;max-width:65vw;padding:4px;border:1px solid rgba(119,186,211,.5);border-radius:999px;background:rgba(3,17,31,.94);box-shadow:inset 0 2px 8px #0008;pointer-events:auto;touch-action:manipulation}
@@ -691,6 +691,7 @@ body.enemyThreat #enemyThreatBanner{animation:enemyWarningPulse .46s ease-in-out
 #flightui.expert-mode #touchpad #stickZone .axis.left{left:4px!important;top:50%!important;transform:translateY(-50%)!important;}
 #flightui.expert-mode #touchpad #stickZone .axis.right{right:4px!important;top:50%!important;transform:translateY(-50%)!important;}
 #menuBtn{border-color:#f0c46d!important;background:linear-gradient(145deg,#554323,#302710)!important;color:#fff2c8!important;font-weight:900!important;}
+#helpBtn,#tripoBtn{display:none!important;}
 @media (orientation:landscape) and (pointer:coarse) and (max-width:700px){
  #flightTopControls{width:clamp(210px,40vw,250px)!important;}
  .difficulty-chooser{gap:5px;padding:7px;margin-top:7px;font-size:11px}
